@@ -1,22 +1,22 @@
 import { Bookmark, MapPin } from "lucide-react";
 import React, { useState } from "react";
 
-const Card = () => {
+const Card = (props) => {
   const [isSaved, setIsSaved] = useState(false);
 
   return (
-    <article className="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-sm hover:shadow-md transition-shadow">
+    <div className=" w-full max-w-md rounded-xl border border-border bg-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <img
-            src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-logo-meaning.jpg"
+            src={props.logo}
             alt="Amazon"
             className="h-10 w-10 rounded-full object-cover"
           />
           <div>
-            <h3 className="text-sm font-semibold">Amazon</h3>
-            <p className="text-xs text-muted-foreground">5 days ago</p>
+            <h3 className="text-sm font-semibold">{props.company}</h3>
+            <p className="text-xs text-muted-foreground">{props.date}</p>
           </div>
         </div>
 
@@ -33,23 +33,23 @@ const Card = () => {
 
       {/* Content */}
       <div className="space-y-3">
-        <h2 className="text-lg font-semibold">Senior UI/UX Designer</h2>
+        <h2 className="text-lg font-semibold">{props.post}</h2>
 
         <div className="flex gap-2">
           <span className="px-3 py-1 bg-accent text-xs rounded-full">
-            Part-time
+           {props.tag1}
           </span>
           <span className="px-3 py-1 bg-accent text-xs rounded-full">
-            Senior level
+          {props.tag2}
           </span>
         </div>
 
         <div className="flex items-center justify-between pt-2">
           <div>
-            <p className="text-lg font-semibold">$120/hour</p>
+            <p className="text-lg font-semibold">{props.pay}</p>
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4" />
-              <span>Mumbai, India</span>
+              <span>{props.location}</span>
             </div>
           </div>
 
@@ -58,7 +58,7 @@ const Card = () => {
           </button>
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 
