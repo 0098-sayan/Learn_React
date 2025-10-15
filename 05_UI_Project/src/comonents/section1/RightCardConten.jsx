@@ -1,11 +1,11 @@
 import React from "react";
 
-const RightCardConten = () => {
+const RightCardConten = (props) => {
     
   return (
     <div className="absolute h-full w-full p-6 flex flex-col justify-between">
       <h2 className="h-10 w-10 bg-white rounded-full flex items-center justify-center">
-        1
+        {props.id+1}
       </h2>
       <div>
         <p className="mb-5 text-white font-medium">
@@ -15,7 +15,7 @@ const RightCardConten = () => {
         </p>
         <div className="flex justify-between">
           <button className="bg-blue-600 px-3 py-2 rounded-3xl">
-            Satisfied
+            {props.tag}
           </button>
           <button className="bg-blue-600 px-3 py-2 rounded-full">
             <i className="ri-arrow-right-line"></i>

@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@layer utilities {
+  #right::-webkit-scrollbar {
+    display: none;
+  }
+
+  #right {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

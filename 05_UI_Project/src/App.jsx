@@ -18,6 +18,11 @@ const users = [
     content: "",
     tag: "Underbanked",
   },
+  {
+    img: "https://images.unsplash.com/photo-1589785157215-127232cf9dca?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fHBlcG9sZXxlbnwwfDF8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+    content: "",
+    tag: "Underwear",
+  },
 ];
 
 const App = () => {
