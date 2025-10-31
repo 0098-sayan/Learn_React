@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
+  const [title, setTitle] = useState("");
+  const [details, setDetails] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(title, details);
+    setTitle("");
+    setDetails("");
+  };
   return (
     <div className="h-screen lg:flex bg-black text-white">
-      <form className="flex gap-4 lg:w-1/2 p-10 flex-col">
+      <form
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+        className="flex gap-4 lg:w-1/2 p-10 flex-col"
+      >
         <h1 className="text-3xl font-medium">Add Notes</h1>
         <input
           className="border-2 w-full px-5 py-2 rounded"
           type="text"
           placeholder="Enter notes Heading"
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
         />
         <textarea
           className="border-2 w-full px-5 py-2 rounded"
           placeholder="Enter details"
+          value={details}
+          onChange={(e) => {
+            setDetails(e.target.value);
+          }}
         ></textarea>
         <button className="bg-white text-black font-medium px-5 py-2 rounded active:scale-95">
           Add note
