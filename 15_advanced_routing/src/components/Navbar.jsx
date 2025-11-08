@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 const Navbar = () => {
   return (
-    <div className="flex justify-between bg-blue-500 px-10 py-3 ">
+    <div className="flex justify-between bg-cyan-700 px-10 py-3 ">
       <h2 className="text-4xl tracking-widest font-bold text-gray-800">XYZ</h2>
       <div className="flex gap-10 font-semibold items-center">
         <Link to="/">Home</Link>

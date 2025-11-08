@@ -8,6 +8,7 @@ import Product from "./pages/Product"
 import Men from "./pages/Men";
 import Women from "./pages/Women";
 import Kids from "./pages/Kids";
+import Navbar2 from "./components/Navbar2";
 
 
 
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      <Navbar2/>
       <Routes> 
         <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
