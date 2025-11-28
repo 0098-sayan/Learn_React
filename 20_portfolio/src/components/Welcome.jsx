@@ -20,7 +20,9 @@ const renderText = (text, className, baseWeight = 400) => {
 };
 
 const setupTextHover = (container, type) => {
-  if (!container) return;
+  //if the container isn't available (e.g conditional render, SSR/strictmode timing )
+  //return a no-op clean up so callers can safely invoke it during effect cleanup
+  if (!container) return () => {};
 
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHTS[type];
