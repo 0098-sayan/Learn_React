@@ -1,3 +1,4 @@
+import { useGSAP } from "@gsap/react";
 import useWindowStore from "@store/window.js";
 import { useRef } from "react";
 
@@ -6,6 +7,13 @@ const WindowWrapper = (Component, windowKey) => {
     const { focusWindow, windows } = useWindowStore();
     const { isOpen, zIndex } = windows[windowKey];
     const ref = useRef(null);
+
+    useGSAP(() => {
+      const el = ref.current;
+      if (!el || !open) return;
+
+      el.style.display = "block";
+    }, [isOpen]);
 
     return (
       <section id={windowKey} ref={ref} style={{ zIndex }} className="absolute">
