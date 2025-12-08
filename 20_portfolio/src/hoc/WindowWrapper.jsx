@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import useWindowStore from "@store/window.js";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 const WindowWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
@@ -13,6 +13,12 @@ const WindowWrapper = (Component, windowKey) => {
       if (!el || !open) return;
 
       el.style.display = "block";
+    }, [isOpen]);
+
+    useLayoutEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      el.style.display = isOpen ? "block" : "none";
     }, [isOpen]);
 
     return (
