@@ -35,7 +35,20 @@ const Finder = () => {
           </div>
           <div>
             <h3>Work</h3>
-            <ul>...</ul>
+            <ul>
+              {locations.work.children.map((item) => (
+                <li
+                  className={clsx(
+                    item.id === activeLocation.id ? "active" : "not-active"
+                  )}
+                  key={item.id}
+                  onClick={() => setActiveLocation(item)}
+                >
+                  <img src={item.icon} alt={item.name} className="w-4" />
+                  <p className="text-sm font-medium truncate">{item.name}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
