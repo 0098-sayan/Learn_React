@@ -11,24 +11,36 @@ const useWindowStore = create(
       set((state) => {
         const win = state.windows[windowKey];
         if (!win) return;
+
+        const maxExisting = Math.max(
+          state.nextZIndex,
+          ...Object.values(state.windows).map((w) => Number(w?.zIndex ?? 0))
+        );
+        state.nextZIndex = maxExisting;
+
         win.isOpen = true;
-        win.ZIndex = state.nextZIndex;
+        win.zIndex = state.nextZIndex++;
         win.data = data ?? win.data;
-        state.nextZIndex++;
       }),
-    closeWindow: (windowKey) =>
+
+    closeWindow: (windowKey, { clearData = true } = {}) =>
       set((state) => {
         const win = state.windows[windowKey];
         if (!win) return;
         win.isOpen = false;
-        win.ZIndex = INITIAL_Z_INDEX;
-        win.data = null;
+        win.zIndex = INITIAL_Z_INDEX;
+        if (clearData) win.data = null;
       }),
+
     focusWindow: (windowKey) =>
       set((state) => {
         const win = state.windows[windowKey];
-        win.ZIndex = state.nextZIndex++;
+        if (!win) return;
+        win.zIndex = state.nextZIndex++;
       }),
+
+    getOpenWindows: () =>
+      Object.values(useWindowStore.getState().windows).filter((w) => w.isOpen),
   }))
 );
 
