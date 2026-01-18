@@ -4,6 +4,11 @@ import WindowWrapper from "@hoc/WindowWrapper";
 import { Check, Flag } from "lucide-react";
 
 const Terminal = () => {
+  const totalStacks = techStack.length;
+  const loadedStacks = techStack.length;
+  const successPercentage = (loadedStacks / totalStacks) * 100;
+  const renderTime = Math.random() * 10; // Simulated render time in ms
+
   return (
     <>
       <div id="window-header">
@@ -36,10 +41,11 @@ const Terminal = () => {
         </ul>
         <div className="footnote">
           <p>
-            <Check size={20} /> 5 of 5 stacks loaded successfully (100%)
+            <Check size={20} /> {loadedStacks} of {totalStacks} stacks loaded
+            successfully ({successPercentage.toFixed(0)}%)
           </p>
           <p className="text-black">
-            <Flag size={15} fill="black" /> Render time of : 6ms
+            <Flag size={15} fill="black" /> Render time of: {renderTime.toFixed(2)}ms
           </p>
         </div>
       </div>
