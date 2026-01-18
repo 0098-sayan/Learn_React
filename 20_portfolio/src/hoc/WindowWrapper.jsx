@@ -12,14 +12,14 @@ const WindowWrapper = (Component, windowKey) => {
 
     useGSAP(() => {
       const el = ref.current;
-      if (!el || !open) return;
+      if (!el || !isOpen) return;
 
       el.style.display = "block";
 
       gsap.fromTo(
         el,
-        { Scale: 0.8, opacity: 0, y: 40 },
-        { Scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }
+        { scale: 0.8, opacity: 0, y: 40 },
+        { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }
       );
     }, [isOpen]);
 
@@ -27,9 +27,9 @@ const WindowWrapper = (Component, windowKey) => {
       const el = ref.current;
       if (!el) return;
 
-      const [instance] = Draggable.create(el, {
+      const instance = Draggable.create(el, {
         onPress: () => focusWindow(windowKey),
-      });
+      })[0];
 
       return () => instance.kill();
     }, []);
