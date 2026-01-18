@@ -61,6 +61,7 @@ const Dock = () => {
 
     if (!window) {
       console.error(`window not found for app: ${app.id}`);
+      return;
     }
 
     if (window.isOpen) {
@@ -68,7 +69,6 @@ const Dock = () => {
     } else {
       openWindow(app.id);
     }
-    console.log(windows);
   };
 
   return (
